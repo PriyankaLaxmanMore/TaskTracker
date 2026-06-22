@@ -37,4 +37,3 @@ Solution:
 ### Problem 3: Environment variable missing
 Cause:
 Solution:
-
