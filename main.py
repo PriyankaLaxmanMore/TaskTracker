@@ -237,3 +237,8 @@ def readyz(db: Session = Depends(get_db)):
 @app.get("/")
 def root():
     return {"status": "TaskTracker running"}
+
+
+
+
+
