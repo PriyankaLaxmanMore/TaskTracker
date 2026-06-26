@@ -56,8 +56,15 @@ jobs:
       - name: Run Ruff Lint
         run: ruff check .
 
-      - name: Run Tests
-        run: pytest --cov=. --cov-fail-under=80
+     - name: Run Tests
+  env:
+    PYTHONPATH: ${{ github.workspace }}
+  run: |
+    pwd
+    ls -la
+    python -c "import sys; print(sys.path)"
+    python -c "import main"
+    python -m pytest --cov=. --cov-fail-under=80 -v
 
       - name: Build Docker Image
         run: docker build -t tasktracker-app .
