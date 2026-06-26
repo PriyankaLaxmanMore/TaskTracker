@@ -1,11 +1,11 @@
 name: TaskTracker CI/CD
 
 on:
-  pull_request:
-    branches:
-      - main
-
   push:
+    branches:
+      - "**"
+
+  pull_request:
     branches:
       - main
 
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -31,7 +31,7 @@ jobs:
       - name: Run Ruff Lint
         run: ruff check .
 
-      - name: Run Tests with Coverage (80% Gate)
+      - name: Run Tests with Coverage
         run: pytest --cov=. --cov-fail-under=80
 
       - name: Build Docker Image
@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Build Docker Image
